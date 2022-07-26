@@ -22,7 +22,8 @@ function mostrar()
     let cantVarones; // contador para saber cuantos varones tienen esa nota
 
     flag1 = 0;
-    flag2 = 0;
+    cantVarones = 0;
+    notaTotal = 0;
 
     for(i = 0; i < 5; i++)
     {
@@ -54,13 +55,13 @@ function mostrar()
                 sexoNotaBaja = sexo;
             }
         }
-        if(sexo == 'm' && nota > 5)
+        if(sexo == 'm' && nota >= 6)
         {
             cantVarones++;
         }
     }
 
-    promedio = nota / i;
+    promedio = notaTotal / 5;
 
     alert("el promedio total es las notas es de: " + promedio);
     alert("la nota mas baja es: " + notaBaja + " y es: " + sexoNotaBaja);
