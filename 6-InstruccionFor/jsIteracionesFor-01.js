@@ -6,6 +6,6 @@ function mostrar()
 {
 	for(let cont = 1; cont < 11; cont++)
 	{
-		alert(cont);
+		document.write("<br>" + cont);
 	}
 }
