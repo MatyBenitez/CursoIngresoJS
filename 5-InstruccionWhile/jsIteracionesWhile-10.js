@@ -62,7 +62,7 @@ function mostrar()
 
 	// if((edad % 2) == 0)
 	// {
-	// lp 
+
 	// }
 	promedioNegativos = sumaNegativos / contNegativos;
 	promedioPositivos = sumaPositivos / contPositivos;
