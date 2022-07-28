@@ -87,22 +87,20 @@ function mostrar()
     let pesoKilo;
     let precioKilo;
     let respuesta;
-    let flagOne; //para descuento
     let descuento;
     let totalBruto;
     let totalDescuento;
     let tipo;
     let pesoTotal;
     let precioTotal;
-    let flagTwo; //alimento mas caro
+    let flagTipoCaro;
     let tipoCaro;
     let precioCaro;
     let promedioKilo;
 
     respuesta = 's';
-    flagOne = 0;
     descuento = 0;
-    flagTwo = 0;
+    flagTipoCaro = 0;
     pesoKilo = 0;
     precioKilo = 0;
     pesoTotal = 0;
@@ -136,33 +134,19 @@ function mostrar()
         totalBruto = pesoTotal * precioKilo;
 
         tipo = prompt("ingrese un ingrediente: 'v' 'a' 'm' vegetal,animal o mezcla )");
-        //tipo = tipo.toLowerCase;
+        tipo = tipo.toLowerCase();
 
         while(tipo != 'v' && tipo != 'a' && tipo != 'm')
         {
             tipo = prompt("Error, ingrese bien un ingrediente: 'v' 'a' 'm' vegetal,animal o mezcla )");
-            //tipo = tipo.toLowerCase;
-        }
-        
-        if(flagOne == 0)
-        {
-            if(pesoKilo > 100 && pesoKilo < 300)
-            {
-              descuento = 0.15;
-              flagOne = 1;
-            }
-            else
-            {
-                descuento = 0.25;
-                flagOne = 1;
-            }
+            tipo = tipo.toLowerCase();
         }
 
-        if(flagTwo == 0)
+        if(flagTipoCaro == 0)
         {
             tipoCaro = tipo;
             precioCaro = precioKilo;
-            flagTwo = 1;
+            flagTipoCaro = 1;
         }
         else
         {
@@ -177,13 +161,25 @@ function mostrar()
         respuesta = respuesta.toLowerCase();
     }
 
+    if(pesoTotal > 300)
+    {
+        descuento = 0.25;
+    }
+    else
+    {
+        if(pesoTotal > 100)
+        {
+            descuento = 0.15;
+        }
+    }
+
     promedioKilo = precioTotal / pesoTotal;
 
     document.write("el importe total a pagar es de: " + totalBruto);
     document.write("<br>El alimento mas caro es: " + tipoCaro + " con un precio de: " + precioCaro + " por Kg");
     document.write("<br>El promedio total por Kg es de: " + promedioKilo + " Kg");
 
-    if(flagOne == 1)
+    if(descuento > 0)
     {
         totalDescuento = totalBruto - (totalBruto * descuento);
         document.write("<br>Su importe total con descuento es de: " + totalDescuento);
