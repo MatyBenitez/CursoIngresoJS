@@ -69,6 +69,9 @@ c) La cantidad de varones que su nota haya sido mayor o igual a 6.
 }*/
 
 /*Práctica de Parcial:
+benitez matias
+practica parcial
+DIV X
 
 
 Realizar el algoritmo que permita ingresar los datos de una compra de ingredientes para preparar comida al por mayor ,
