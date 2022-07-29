@@ -130,6 +130,9 @@ function mostrar()
 	let nombreJoven;
 	let edadJoven;
 	let respuesta;
+	let promedioM;
+	let promedioF;
+	let promedioNB;
 
 	respuesta = 's';
 	cantidadMaterias = 0;
@@ -138,6 +141,9 @@ function mostrar()
 	flagMejorPromedio = 0;
 	flagJoven = 0;
 	edadJoven = 81;
+	promedioM = 0;
+	promedioF = 0;
+	promedioNB = 0;
 
 	while(respuesta == 's')
 	{
@@ -210,6 +216,19 @@ function mostrar()
 					nombreJoven = nombre;
 				}
 			}
+		}
+
+		switch(sexo)
+		{
+			case "m":
+			
+			break;
+			case "f":
+
+			break;
+			case "nb":
+
+			break;
 		}
 
 	    respuesta = prompt("¿Quiere seguir ingresando datos? s/n");
