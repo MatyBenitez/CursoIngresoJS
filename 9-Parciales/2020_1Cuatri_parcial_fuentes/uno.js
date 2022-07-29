@@ -2,24 +2,24 @@
 Benitez Matias
 DIV X
 Practica Parcial 28/7
-Debemos realizar la carga de una compra de 5(cinco) productos de desinfección
+Debemos realizar la carga de una compra de 5(cinco) tipoCursadas de desinfección
 de cada una debo obtener los siguientes datos:
--el nombre del producto 
--el tipo de producto (validar "ALCOHOL", "IAC" o "QUAT"),
+-el nombre del tipoCursada 
+-el tipo de tipoCursada (validar "ALCOHOL", "IAC" o "QUAT"),
 -el precio (validar entre 100 y 300),
 -la cantidad de unidades (no puede ser 0 o negativo y no debe superar las 1000 unidades),
 -el tipo de inflamable("ignífugo", "combustible", "explosivo" ) 
 -y la Marca.
 Se debe Informar al usuario lo siguiente:
-a) El promedio de cantidad por tipo de producto
+a) El promedio de cantidad por tipo de tipoCursada
 b) El tipo de inflamable con más cantidad de unidades en total de la compra
 c) Cuántas unidades de IAC con precios menos a 200 (inclusive) se compraron en total
-d) la marca y tipo del más caro de los productos
+d) la marca y tipo del más caro de los tipoCursadas
 */
-function mostrar()
+/*function mostrar()
 {   let nombre;
-	let tipoProducto;
-	let precioProducto;
+	let tipotipoCursada;
+	let preciotipoCursada;
 	let cantidadUnidades;
 	let tipoInflamable;
 	let marca;
@@ -37,23 +37,23 @@ function mostrar()
 
 	for(i = 1; i < 6; i++)
 	{
-		nombre = prompt("Ingrese el nombre del Producto");
-		tipoProducto = prompt("Ingrese el tipo de producto: A para: ALCOHOL, I para: IAC o Q para: QUAT");
-		tipoProducto = tipoProducto.toUpperCase();
+		nombre = prompt("Ingrese el nombre del tipoCursada");
+		tipotipoCursada = prompt("Ingrese el tipo de tipoCursada: A para: ALCOHOL, I para: IAC o Q para: QUAT");
+		tipotipoCursada = tipotipoCursada.toUpperCase();
 
-		while(tipoProducto != 'A' && tipoProducto != 'I' && tipoProducto != 'Q')
+		while(tipotipoCursada != 'A' && tipotipoCursada != 'I' && tipotipoCursada != 'Q')
 		{
-			tipoProducto = prompt("Error. Ingrese el tipo de producto correctamente: A para: ALCOHOL, I para: IAC o Q para: QUAT");
-			tipoProducto = tipoProducto.toUpperCase();
+			tipotipoCursada = prompt("Error. Ingrese el tipo de tipoCursada correctamente: A para: ALCOHOL, I para: IAC o Q para: QUAT");
+			tipotipoCursada = tipotipoCursada.toUpperCase();
 		}
 
-		precioProducto = prompt("Ingrese el precio del producto entre 100 y 300");
-		precioProducto = parseFloat(precioProducto);
+		preciotipoCursada = prompt("Ingrese el precio del tipoCursada entre 100 y 300");
+		preciotipoCursada = parseFloat(preciotipoCursada);
 
-		while(!(precioProducto > 99 && precioProducto < 301))
+		while(!(preciotipoCursada > 99 && preciotipoCursada < 301))
 		{
-			precioProducto = prompt("Error. Ingrese el precio del producto correctamente, entre 100 y 300");
-			precioProducto = parseFloat(precioProducto);
+			preciotipoCursada = prompt("Error. Ingrese el precio del tipoCursada correctamente, entre 100 y 300");
+			preciotipoCursada = parseFloat(preciotipoCursada);
 		}
 
 		cantidadUnidades = prompt("Ingrese la cantidad de unidades");
@@ -76,7 +76,7 @@ function mostrar()
 
 		marca = prompt("Ingrese la marca");
 
-		switch(tipoProducto)
+		switch(tipotipoCursada)
 		{
     	case 'A':
 			CantidadAlcohol++
@@ -92,4 +92,144 @@ function mostrar()
 	}
 	
 	
+}*/
+
+
+
+
+/*
+Benitez Matias
+DIV X
+Practica Parcial 28/7 parte2
+Realizar el algoritmo que permita ingresar los datos de los alumnos de una 
+division de la UTN FRA, los datos solicitados son:
+-nombre
+-Tipo curasada("libre";"presencial";"remota")
+-cantidad de materias( mas de cero y menos de 8)
+-Sexo ( femenino , masculino , no binario)
+-Nota promedio (entre 0 y 10)
+-edad (validar)
+-se debe informar de existir, o informar que no existe , en el caso que corresponda.
+a) El nombre del mejor promedio que no sea masculino
+b) El nombre del mas joven de los alumnos entre los que la dan libre
+c) El promedio de nota por sexo
+d) La edad y nombre del que cursa mas materias que no sean en forma remota
+*/
+function mostrar()
+{
+    let nombre;
+	let tipoCursada;
+	let cantidadMaterias;
+	let sexo;
+	let notaPromedio;
+	let edad;
+	let flagMejorPromedio;
+	let mejorPromedioNM;
+	let nombreMejorePromedio;
+	let flagJoven;
+	let nombreJoven;
+	let edadJoven;
+	let respuesta;
+
+	respuesta = 's';
+	cantidadMaterias = 0;
+	notaPromedio = 0;
+	edad = 0;
+	flagMejorPromedio = 0;
+	flagJoven = 0;
+	edadJoven = 81;
+
+	while(respuesta == 's')
+	{
+		nombre = prompt("Ingrese su nombre");
+
+		tipoCursada = prompt("Ingrese el tipo de tipoCursada:");
+		tipoCursada = tipoCursada.toLowerCase();
+		
+		while(tipoCursada != "libre" && tipoCursada != "presencial" && tipoCursada != "remota")
+		{
+			tipoCursada = prompt("Error. Ingrese el tipo de tipoCursada correctamente: libre, presencila o remota");
+			tipoCursada = tipoCursada.toLowerCase();
+		}
+
+		do  
+		{
+			cantidadMaterias = prompt("Ingrese cuantas materias tiene");
+			cantidadMaterias = parseInt(cantidadMaterias);
+		}while(isNaN(cantidadMaterias) == true || cantidadMaterias > 0 && cantidadMaterias < 9);
+
+
+		do  
+		{
+			sexo = prompt("Ingrese sexo: f/m/noBinario(nb)");
+			sexo = sexo.toLowerCase();
+		}while(isNaN(cantidadMaterias) == false || sexo != 'm' && sexo != 'f' && sexo != "nb");
+
+		do  
+		{
+			notaPromedio = prompt("Ingrese su nota promedio");
+			notaPromedio = parseFloat(notaPromedio);
+		}while(isNaN(notaPromedio) == true || !(notaPromedio > 0 && notaPromedio < 11));
+
+		do  
+		{
+			edad = prompt("Ingrese edad");
+		}while(isNaN(notaPromedio) == true || !(notaPromedio > 17 && notaPromedio < 80));
+		
+		if(sexo != 'm')
+		{
+			if(flagMejorPromedio == 0)
+			{
+				mejorPromedioNM = notaPromedio;
+				nombreMejorePromedio = nombre;
+				flagMejorPromedio = 1;
+			}
+			else
+			{
+				if(notaPromedio > mejorPromedioNM)
+				{
+					mejorPromedioNM = notaPromedio;
+					nombreMejorePromedio = nombre;
+				}
+			}
+		}
+
+		if(tipoCursada == "libre")
+		{
+			if(flagJoven == 0)
+			{
+			nombreJoven = nombre;
+			edadJoven = edad;
+			flagJoven = 1;
+			}
+			else
+			{
+				if(edad < edadJoven)
+				{
+					edadJoven = edad;
+					nombreJoven = nombre;
+				}
+			}
+		}
+
+	    respuesta = prompt("¿Quiere seguir ingresando datos? s/n");
+    	respuesta = respuesta.toLowerCase();
+	}
+
+	if(flagMejorPromedio == 1)
+	{
+		document.write("nombre del mejor promedio no masculino es: " + nombreMejorePromedio);
+	}
+
+	document.write("<br>nombre del mas joven de los alumnos entre los que la dan libre es: " + nombreJoven);
+
+
+
+
+
+
+
+
+
+
 }
