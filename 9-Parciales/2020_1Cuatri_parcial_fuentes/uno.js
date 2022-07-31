@@ -130,57 +130,74 @@ function mostrar()
 	let nombreJoven;
 	let edadJoven;
 	let respuesta;
+	let acumuladorM;
+	let acumuladorF;
+	let acumuladorNB;
 	let promedioM;
 	let promedioF;
 	let promedioNB;
+	let contM;
+	let contF;
+	let contNB;
+	let edadMasMaterias;
+	let nombreMasMaterias;
+	let flagMasMaterias;
+	let cantidadMasMaterias;
 
 	respuesta = 's';
-	cantidadMaterias = 0;
-	notaPromedio = 0;
-	edad = 0;
 	flagMejorPromedio = 0;
 	flagJoven = 0;
 	edadJoven = 81;
 	promedioM = 0;
 	promedioF = 0;
 	promedioNB = 0;
+	contM = 0;
+	contF = 0;
+	contNB = 0;
+	acumuladorM = 0;
+	acumuladorF = 0;
+	acumuladorNB = 0;
+	edadMasMaterias = 0;
+	flagMasMaterias = 0;
+	cantidadMasMaterias = 0;
 
 	while(respuesta == 's')
 	{
 		nombre = prompt("Ingrese su nombre");
 
-		tipoCursada = prompt("Ingrese el tipo de tipoCursada:");
+		tipoCursada = prompt("Ingrese el tipo de tipoCursada: libre, presencial o remota");
 		tipoCursada = tipoCursada.toLowerCase();
 		
 		while(tipoCursada != "libre" && tipoCursada != "presencial" && tipoCursada != "remota")
 		{
-			tipoCursada = prompt("Error. Ingrese el tipo de tipoCursada correctamente: libre, presencila o remota");
+			tipoCursada = prompt("Error. Ingrese el tipo de tipoCursada correctamente: libre, presencial o remota");
 			tipoCursada = tipoCursada.toLowerCase();
 		}
 
-		do  
+		do
 		{
-			cantidadMaterias = prompt("Ingrese cuantas materias tiene");
+			cantidadMaterias = prompt("Ingrese cantidad de materias");
 			cantidadMaterias = parseInt(cantidadMaterias);
-		}while(isNaN(cantidadMaterias) == true || cantidadMaterias > 0 && cantidadMaterias < 9);
+		}while((isNaN(cantidadMaterias)) || cantidadMaterias < 0 || cantidadMaterias > 8);
 
 
 		do  
 		{
 			sexo = prompt("Ingrese sexo: f/m/noBinario(nb)");
 			sexo = sexo.toLowerCase();
-		}while(isNaN(cantidadMaterias) == false || sexo != 'm' && sexo != 'f' && sexo != "nb");
+		}while(sexo != 'm' && sexo != 'f' && sexo != "nb");
 
-		do  
+		do
 		{
 			notaPromedio = prompt("Ingrese su nota promedio");
-			notaPromedio = parseFloat(notaPromedio);
-		}while(isNaN(notaPromedio) == true || !(notaPromedio > 0 && notaPromedio < 11));
+			notaPromedio = parseInt(notaPromedio);
+		}while((isNaN(notaPromedio)) || notaPromedio < 0 || notaPromedio > 10);
 
-		do  
+		do
 		{
-			edad = prompt("Ingrese edad");
-		}while(isNaN(notaPromedio) == true || !(notaPromedio > 17 && notaPromedio < 80));
+			edad = prompt("Ingrese su edad");
+			edad = parseInt(edad);
+		}while((isNaN(edad)) || edad < 17 || edad > 81);
 		
 		if(sexo != 'm')
 		{
@@ -221,14 +238,35 @@ function mostrar()
 		switch(sexo)
 		{
 			case "m":
-			
+				acumuladorM	+= notaPromedio;
+				contM++;
 			break;
 			case "f":
-
+				acumuladorF += notaPromedio;
+				contF++;
 			break;
 			case "nb":
-
+				acumuladorNB += notaPromedio;
+				contNB++;
 			break;
+		}
+
+		if(tipoCursada != "remota")
+		{
+			if(flagMasMaterias == 0)
+			{
+				nombreMasMaterias = nombre;
+				edadMasMaterias = edad;
+				cantidadMasMaterias = cantidadMaterias;
+			}
+			else
+			{
+				if(cantidadMasMaterias < cantidadMaterias)
+				{
+					nombreMasMaterias = nombre;
+					edadMasMaterias = edad;
+				}
+			}
 		}
 
 	    respuesta = prompt("¿Quiere seguir ingresando datos? s/n");
@@ -239,11 +277,58 @@ function mostrar()
 	{
 		document.write("nombre del mejor promedio no masculino es: " + nombreMejorePromedio);
 	}
+	else
+	{
+		document.write("<br>mejor promedio no masculino no existe");
+	}
 
+	if(flagJoven == 1)
+	{
 	document.write("<br>nombre del mas joven de los alumnos entre los que la dan libre es: " + nombreJoven);
+	}
+	else
+	{
+		document.write("<br>el mas joven de los alumnos entre los que la dan libre no existe");
+	}
 
+	if(contM != 0)
+	{
+		promedioM = acumuladorM / contM;
+	document.write("<br>El promedio de nota masculina es: " + promedioM);
+	}
+	else
+	{
+		document.write("<br>El promedio de nota masculina no existe");
+	}
 
+	if(contF != 0)
+	{
+		promedioF = acumuladorF / contF;
+	document.write("<br>El promeio de nota femenina es: " + promedioF);
+	}
+	else
+	{
+		document.write("<br>El promeio de nota femenina no existe");
+	}
 
+	if(contNB != 0)
+	{
+		promedioNB = acumuladorNB / contNB;
+	document.write("<br>El promedio de nota no binaria es: " + promedioNB);
+	}
+	else
+	{
+		document.write("<br>El promedio de nota no binaria no existe");
+	}
+
+	if(flagMasMaterias == 1)
+	{
+	document.write("<br>El alumno que cursa mas materias de forma que no es de forma remota es: " + nombreMasMaterias + " con: " + edadMasMaterias + " anios");
+	}
+	else
+	{
+		document.write("<br>El alumno que cursa mas materias de forma que no es de forma remota no existe");
+	}
 
 
 

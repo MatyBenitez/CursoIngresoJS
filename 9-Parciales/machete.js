@@ -15,7 +15,13 @@ do
     pedido = prompt("Ingrese numero");
     pedido = parseFloat(pedido);
     pedido = parseInt(pedido);
-}while(isNaN(pedido) == true || pedido > 10 || pedido < 20);
+}while(isNaN(pedido) || pedido < 10 || pedido > 20);
+
+do
+{
+    cantidadMaterias = prompt("Ingrese cantidad de materias");
+    cantidadMaterias = parseInt(cantidadMaterias);
+}while((isNaN(cantidadMaterias)) || cantidadMaterias < 0 || cantidadMaterias > 8);
 
 //validacion de producto con do
 do  
@@ -23,7 +29,7 @@ do
     sexo = prompt("Ingrese sexo");
     sexo = sexo.toUpperCase();
     sexo = sexo.toLowerCase();
-}while(isNaN(pedido) == false || sexo != 'm' && sexo != 'f');
+}while(sexo != 'm' && sexo != 'f');
 
 //validacion de letra con while
 producto = prompt("Ingrese el tipo de producto:");
@@ -50,7 +56,8 @@ while(respuesta == 's')
 }
 
 //acumulador
-acumulador = acumulador + cantidadIngresada
+acumulador = acumulador + cantidadIngresada;
+acumulador += cantidadIngresada;
 
 //contador
 contador++
