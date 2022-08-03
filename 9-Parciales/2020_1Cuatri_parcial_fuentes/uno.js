@@ -106,21 +106,22 @@ division de la UTN FRA, los datos solicitados son:
 -nombre
 -Tipo curasada("libre";"presencial";"remota")
 -cantidad de materias( mas de cero y menos de 8)
--Sexo ( femenino , masculino , no binario)
+-nombre ( femenino , masculino , no binario)
 -Nota promedio (entre 0 y 10)
 -edad (validar)
 -se debe informar de existir, o informar que no existe , en el caso que corresponda.
 a) El nombre del mejor promedio que no sea masculino
 b) El nombre del mas joven de los alumnos entre los que la dan libre
-c) El promedio de nota por sexo
+c) El promedio de nota por nombre
 d) La edad y nombre del que cursa mas materias que no sean en forma remota
 */
+/*
 function mostrar()
 {
     let nombre;
 	let tipoCursada;
 	let cantidadMaterias;
-	let sexo;
+	let nombre;
 	let notaPromedio;
 	let edad;
 	let flagMejorPromedio;
@@ -183,9 +184,9 @@ function mostrar()
 
 		do  
 		{
-			sexo = prompt("Ingrese sexo: f/m/noBinario(nb)");
-			sexo = sexo.toLowerCase();
-		}while(sexo != 'm' && sexo != 'f' && sexo != "nb");
+			nombre = prompt("Ingrese nombre: f/m/noBinario(nb)");
+			nombre = nombre.toLowerCase();
+		}while(nombre != 'm' && nombre != 'f' && nombre != "nb");
 
 		do
 		{
@@ -199,7 +200,7 @@ function mostrar()
 			edad = parseInt(edad);
 		}while((isNaN(edad)) || edad < 17 || edad > 81);
 		
-		if(sexo != 'm')
+		if(nombre != 'm')
 		{
 			if(flagMejorPromedio == 0)
 			{
@@ -235,7 +236,7 @@ function mostrar()
 			}
 		}
 
-		switch(sexo)
+		switch(nombre)
 		{
 			case "m":
 				acumuladorM	+= notaPromedio;
@@ -329,11 +330,132 @@ function mostrar()
 	{
 		document.write("<br>El alumno que cursa mas materias de forma que no es de forma remota no existe");
 	}
+}*/
 
 
 
 
+/*
+Ejercicio 1
 
+Se pide cargar la ficha médica para 11 jugadores de fútbol.
+Se solicita Nombre, Edad, Peso(ej: 60.5kg) y Altura(ej: 1.65mt).
+A) Nombre del jugador más joven.
+B) El peso del jugador más alto.
+C) Promedio de altura del equipo.
+D) Promedio de peso del equipo.
+E) Cantidad de jugadores que superen 1.7 mt y pesen mas de 85 kg.
+*/
+function mostrar()
+{
+	let nombre;
+	let edad;
+	let peso;
+	let altura;
+	let i;
+	let FlagNombreJugadorMasJoven;
+	let nombrejugadorMasJoven;
+	let edadJugadorMasJoven;
+	let flagPesoJugadorMasAlto;
+	let PesoJugadorMasAlto;
+	let alturaJugadorMasAlto;
+	let acumuladorAlturaEquipo;
+	let acumuladorPesoEquipo;
+	let promedioAlturaEquipo;
+	let promedioPesoEquipo;
+	let contJugadoresSuperen;
+
+	FlagNombreJugadorMasJoven = 0;
+	flagPesoJugadorMasAlto = 0;
+	acumuladorAlturaEquipo = 0;
+	acumuladorPesoEquipo = 0;
+
+
+	for(i = 0; i < 11; i++)
+	{
+		do  
+		{
+    		nombre = prompt("Ingrese nombre");
+    		nombre = nombre.toLowerCase();
+		}while(!(isNaN(nombre)));
+		
+		edad = prompt("Ingrese su edad:");
+		edad = parseInt(edad);
+
+		while((isNaN(edad)) || edad < 0 )
+		{
+    		edad = prompt("Error. Ingrese su edad correctamente:");
+    		edad = parseInt(edad);
+		}
+
+		peso = prompt("Ingrese su peso en Kg:");
+		peso = parseFloat(peso);
+
+		while((isNaN(peso)) || peso < 0 )
+		{
+    		peso = prompt("Error. Ingrese su peso en Kg correctamente:");
+    		peso = parseInt(peso);
+		}
+
+		acumuladorPesoEquipo += peso;
+
+		altura = prompt("Ingrese su altura en Mt:");
+		altura = parseFloat(altura);
+
+		while((isNaN(altura)) || altura < 0 )
+		{
+    		altura = prompt("Error. Ingrese su altura en Mt correctamente:");
+    		altura = parseFloat(altura);
+		}
+
+		acumuladorAlturaEquipo += altura;
+
+		if(FlagNombreJugadorMasJoven == 0)
+		{
+			nombrejugadorMasJoven = nombre;
+			edadJugadorMasJoven = edad;
+			bandera = 1;
+		}
+		else
+		{ 
+			if(edad > edadJugadorMasJoven)
+			{
+				nombrejugadorMasJoven = nombre;
+				edadJugadorMasJoven = edad;
+			}
+		}
+
+		if(flagPesoJugadorMasAlto == 0)
+		{
+			PesoJugadorMasAlto = peso;
+			alturaJugadorMasAlto = altura;
+			bandera = 1;
+		}
+		else
+		{ 
+			if(altura > alturaJugadorMasAlto)
+			{
+				PesoJugadorMasAlto = peso;
+				alturaJugadorMasAlto = altura;
+			}
+		}
+
+		if(altura >= 1.70 && peso > 84)
+		{
+			contJugadoresSuperen++;
+		}
+	}
+
+	promedioAlturaEquipo = acumuladorAlturaEquipo / 11;
+	promedioPesoEquipo = acumuladorPesoEquipo / 11;
+	promedioAlturaEquipo.toFixed(2);
+	promedioPesoEquipo.toFixed(2);
+
+	document.write("El nombre del jugador mas joven es: " + nombrejugadorMasJoven);
+	document.write("<br>El peso del jugador mas alto es de: " + PesoJugadorMasAlto + "Kg");
+	document.write("<br>El promedio de altura en el equipo es de: " + promedioAlturaEquipo + "Mts");
+	document.write("<br>El preomedio del peso del equipo es de: " + promedioPesoEquipo + "Kg");
+	document.write("<br>los jugadores que superan 1.70Mts y pesan mas de 85Kg son: " + contJugadoresSuperen);
 
 
 }

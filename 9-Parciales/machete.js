@@ -75,3 +75,53 @@ switch(variable)
 
     break;
 }
+
+
+//NUMERO MAXIMO Y MINIMO (JUNTOS)
+if(bandera == 0){
+    numeroMin = numero;
+    numeroMax = numero;
+    bandera = 1;
+}else if(numero > numeroMax){
+    numeroMax = numero;
+}else if(numero < numeroMin){
+    numeroMin = numero;
+}
+//NUMERO MAXIMO
+if(bandera == 0) {
+    numeroMax = numero;
+    bandera = 1;
+}else if(numero > numeroMax){
+    numeroMax = numero;
+}
+
+//NUMERO MINIMO
+if(bandera == 0){
+    numeroMin = numero;
+    bandera = 1;
+}else if(numero < numeroMin){
+    numeroMin = numero;
+}
+
+//COMPARAR MAXIMO
+if(a > b && a > c){
+    mayor = "a";
+}else if(b > a && b > c){
+    mayor = "b";
+} else{
+    mayor = "c";
+}
+// COMPARAR MINIMO
+if(a < b && a < c){
+    menor = "a";
+}else if(b < a && b < c){
+    menor = "b";
+} else{
+    menor = "c";
+}
+
+
+// ECUACIONES.
+suma = precio * cantidad;
+precioTotal = precioTotal + suma;
+promedio = suma / contador;
