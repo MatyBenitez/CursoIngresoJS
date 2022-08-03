@@ -6,13 +6,14 @@ function mostrar()
 {
 
 	let repetciones;
-	let cont;
+	let i;
 	
 	repetciones = prompt("ingrese el número de veces que quiere que se repita");
+	repetciones = parseInt(repetciones);
 
-	for()
+	for(i = 0; i < repetciones; i++)
 	{
-
+		document.write("Hola UTN FRA <br>");
 	}
 	
 
