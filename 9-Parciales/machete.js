@@ -2,6 +2,7 @@
 // += acumulador
 // ++ suma de 1
 // -- resta 1
+//CI
 
 //ingreso de datos por cantidad
 for(i = 0; i < 5; i++)
